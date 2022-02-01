@@ -28,26 +28,46 @@ const Calculatrice = (props) => {
 
     }
 
+    const handleCalcul = () =>{
+        
+    }
+
 
     const handleResult = () => {
         console.log("handle Result");
         console.log(operator);
 
+        const val1 =parseFloat(nb1);
+        const val2 =parseFloat(nb2);
+
+        if (isNaN(val1)|| isNaN(val2) ) {
+            setCount("🧙🏼‍♂ Fool of a Took !! 🧙🏼‍♂");
+
+            /* Le "return" empêche le code de continuer après cette boucle si elle est vérifiée */
+            return;
+        }
+
         switch (operator) {
             case "+":
-                setCount(c => parseFloat(nb1) + parseFloat(nb2));
+                setCount(val1 + val2);
                 break;
             case "-":
-                setCount(c => parseFloat(nb1) - parseFloat(nb2));
+                setCount(val1 - val2);
                 break;
             case "X":
-                setCount(c => parseFloat(nb1) * parseFloat(nb2));
+                setCount(val1 * val2);
                 break;
             case "/":
-                setCount(c => parseFloat(nb1) / parseFloat(nb2));
+                if (val2 === 0) {
+                    setCount("On ne divise jamais par zéro, voyons ! 😱 ")
+                }
+                else{
+                   setCount(val1 / val2); 
+                }
+                
                 break;
             case "^":
-                setCount(c => (Math.pow(parseFloat(nb1), parseFloat(nb2))));
+                setCount((Math.pow(val1, val2)));
                 break;
             case "!":
                 /* La Factorielle */
@@ -64,7 +84,8 @@ const Calculatrice = (props) => {
                 break;
 
             default:
-                setCount();
+                /* Au cas où l'opérateur est modifié dans le html de la page web */
+                setCount("Veuillez selectionner une opération valide !");
                 break;
         }
     }
