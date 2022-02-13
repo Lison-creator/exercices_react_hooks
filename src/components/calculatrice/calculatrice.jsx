@@ -28,11 +28,6 @@ const Calculatrice = (props) => {
 
     }
 
-    const handleCalcul = () =>{
-        
-    }
-
-
     const handleResult = () => {
         console.log("handle Result");
         console.log(operator);

@@ -18,8 +18,6 @@ const Reservoir = (props) => {
 
                 /* On déclenche l'évènement */
                 onReservoirPlein();
-
-
                 
             };
         }
